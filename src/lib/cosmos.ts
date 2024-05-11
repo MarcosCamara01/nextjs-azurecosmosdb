@@ -9,10 +9,9 @@ class CosmosSingleton {
     this.container = null;
   }
 
-  async initialize() {
+  async initialize(containerName = "Items") {
     if (!this.database || !this.container) {
-      const databaseName = process.env.COSMOSDB_DATABASE_NAME || "todos";
-      const containerName = process.env.COSMOSDB_CONTAINER_NAME || "todos";
+      const databaseName = process.env.COSMOSDB_DATABASE_NAME || "NextTodo";
       const client = new CosmosClient(process.env.COSMOSDB_CONNECTION_STRING!);
       const database = client.database(databaseName);
       const container = database.container(containerName);
